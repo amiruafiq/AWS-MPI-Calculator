@@ -56,13 +56,14 @@ button {
     margin-top: 15px;
     font-size: 16px;
     font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #FF1721;
 }
 
-/* Disk Grid */
+/* Disk Input Grid */
 #diskInputsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -88,18 +89,6 @@ button:hover {
     color: white;
     border: 1px solid #444;
     border-radius: 4px;
-}
-
-/* Pricing result summary */
-#result {
-    margin-top: 20px;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 1.1em;
-    color: #00008F;
-    background-color: #E6E6E6;
-    border-radius: 4px;
-    text-align: center;
 }
 
 /* Cost Breakdown Table */
@@ -135,6 +124,7 @@ button:hover {
     justify-content: space-between;
     margin-top: 20px;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .button-row button {
@@ -148,6 +138,7 @@ button:hover {
     cursor: pointer;
 }
 
+/* Color Variants */
 .button-row button.green {
     background-color: #2f8132;
 }
@@ -165,7 +156,41 @@ button:hover {
     background-color: #c58000;
 }
 
-/* Hidden class */
+/* Hide Element */
 .hidden {
     display: none;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .button-row {
+        flex-direction: column;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    #diskInputsContainer {
+        grid-template-columns: 1fr;
+    }
+}
+
+.footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #444;
+    text-align: center;
+    border-top: 1px solid #ccc;
+}
+
+.footer a {
+    color: #00008F;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
 }

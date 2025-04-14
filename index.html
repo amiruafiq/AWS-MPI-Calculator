@@ -26,6 +26,26 @@
                 <option value="" disabled selected>Select Region</option>
                 <option value="Singapore Price per Hour (USD)">Singapore</option>
                 <option value="Jakarta Price per Hour (USD)">Jakarta</option>
+                <option value="Tokyo Price per Hour (USD)">Tokyo</option>
+                <option value="Seoul Price per Hour (USD)">Seoul</option>
+                <option value="Mumbai Price per Hour (USD)">Mumbai</option>
+                <option value="Sydney Price per Hour (USD)">Sydney</option>
+                <option value="London Price per Hour (USD)">London</option>
+                <option value="Frankfurt Price per Hour (USD)">Frankfurt</option>
+                <option value="Paris Price per Hour (USD)">Paris</option>
+                <option value="Ireland Price per Hour (USD)">Ireland</option>
+                <option value="Stockholm Price per Hour (USD)">Stockholm</option>
+                <option value="Cape Town Price per Hour (USD)">Cape Town</option>
+                <option value="São Paulo Price per Hour (USD)">São Paulo</option>
+                <option value="Virginia Price per Hour (USD)">Virginia</option>
+                <option value="Ohio Price per Hour (USD)">Ohio</option>
+                <option value="Oregon Price per Hour (USD)">Oregon</option>
+                <option value="California Price per Hour (USD)">California</option>
+                <option value="Canada Central Price per Hour (USD)">Canada Central</option>
+                <option value="Bahrain Price per Hour (USD)">Bahrain</option>
+                <option value="UAE Price per Hour (USD)">UAE</option>
+                <option value="Hong Kong Price per Hour (USD)">Hong Kong</option>
+                <option value="Beijing Price per Hour (USD)">Beijing</option>
             </select>
 
             <label for="vmCount">Number of VM Instances:</label>
@@ -35,8 +55,6 @@
             <input type="number" id="diskCount" placeholder="Number of EBS Disks per VM" min="0" value="0" onchange="generateDisks()"/>
 
             <div id="diskInputsContainer"></div>
-
-            <div id="result"></div>
 
             <!-- Cost Breakdown Table -->
             <table id="costBreakdown" class="hidden">
@@ -57,15 +75,21 @@
         <!-- Action Buttons -->
         <div class="button-row">
             <button onclick="resetForm()">New Calculation</button>
-            <button class="green">Save Calculation</button>
+            <button class="green" onclick="saveCalculation()">Save Calculation</button>
             <button class="yellow" onclick="exportToExcel()">Export to Excel</button>
         </div>
 
         <button onclick="calculatePrice()">Calculate Price</button>
-        <button onclick="exportToPDF()">Export to PDF</button>
     </div>
 
+    <footer class="footer">
+        For any inquiry or suggestion for future development, please contact
+        <a href="mailto:email@axa.com">email@axa.com</a>
+    </footer>
+    
+    <!-- Scripts -->
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </body>
 </html>

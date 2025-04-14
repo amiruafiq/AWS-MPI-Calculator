@@ -72,7 +72,7 @@ function calculatePrice() {
     );
 
     if (!selected) {
-        document.getElementById('result').innerText = 'Pricing data not found for selected combination.';
+        alert("Pricing data not found for selected combination.");
         return;
     }
 
@@ -95,16 +95,7 @@ function calculatePrice() {
     const finalTotal = monthlyTotal + supportCost;
     const monthlyPerVm = pricePerHour * 24 * 30;
 
-    // Show basic result
-    document.getElementById('result').innerHTML = `
-        <div>1) VM Cost per Hour (exclude disk): <strong>$${pricePerHour.toFixed(3)}</strong></div>
-        <div>2) Total VM Cost for ${vmCount} VM(s): <strong>$${totalVmCost.toFixed(3)}</strong></div>
-        <div>3) Total Disk Cost per VM: <strong>$${diskCostPerVM.toFixed(3)}</strong></div>
-        <div>4) Total Cost (VM + EBS): <strong>$${grandTotalHourly.toFixed(3)}</strong> per hour</div>
-        <div>5) Monthly Estimated Cost (30 days): <strong>$${monthlyTotal.toFixed(3)}</strong></div>
-    `;
-
-    // Fill breakdown table
+    // Fill Cost Breakdown Table
     document.getElementById("hourlyPerVm").innerText = `$${pricePerHour.toFixed(5)}`;
     document.getElementById("hourlyTotal").innerText = `$${totalVmCost.toFixed(5)}`;
     document.getElementById("monthlyPerVm").innerText = `$${monthlyPerVm.toFixed(4)}`;
@@ -121,8 +112,11 @@ function resetForm() {
     document.getElementById("vmCount").value = 1;
     document.getElementById("diskCount").value = 0;
     document.getElementById("diskInputsContainer").innerHTML = "";
-    document.getElementById("result").innerHTML = "";
     document.getElementById("costBreakdown").classList.add("hidden");
+}
+
+function saveCalculation() {
+    alert("Save Calculation: Feature not implemented yet.");
 }
 
 function exportToPDF() {
@@ -134,18 +128,27 @@ function exportToPDF() {
     }
 
     const opt = {
-        margin:       0.5,
-        filename:     'aws-ec2-pricing-summary.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        margin: 0.5,
+        filename: 'aws-ec2-pricing-summary.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
     html2pdf().set(opt).from(content).save();
 }
 
 function exportToExcel() {
-    alert("Export to Excel not implemented yet. Would you like me to add SheetJS integration?");
+    const table = document.getElementById("costBreakdown");
+    if (table.classList.contains("hidden")) {
+        alert("Please calculate pricing before exporting.");
+        return;
+    }
+
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.table_to_sheet(table);
+    XLSX.utils.book_append_sheet(wb, ws, "Pricing Summary");
+    XLSX.writeFile(wb, "aws-ec2-pricing-summary.xlsx");
 }
 
 window.onload = loadCSV;

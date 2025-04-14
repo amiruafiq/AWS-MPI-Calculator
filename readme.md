@@ -1,45 +1,66 @@
-🚀 How to Run the Project Locally
-This project is a static web app built with HTML, CSS, and JavaScript. It requires a local HTTP server to run properly due to browser restrictions (like CORS blocking CSV access via file://).
+# 🧮 AWS EC2 Pricing Calculator (AXA Themed)
 
-✅ Option 1: Using Python (Quickest)
-If you have Python installed, follow these steps:
+A sleek, browser-based AWS EC2 pricing calculator designed with AXA branding. This tool helps you calculate instance and EBS costs in real-time, with clear breakdowns and export options — no backend required.
 
-Open Terminal / Command Prompt
+---
 
-Navigate to your project folder (where index.html is):
+## ✅ Features Implemented
 
-bash
-Copy
-Edit
-cd path/to/your/project
-Example:
+| Feature | Status |
+|---------|--------|
+| 🎨 AXA UI branding with colors + favicon | ✅ |
+| 📥 Load EC2 pricing from CSV | ✅ |
+| 🔽 Dropdowns for Instance Type, OS, Region (with 20+ dummy regions) | ✅ |
+| 🖩 User input for: VM count, number of EBS disks, disk size per disk | ✅ |
+| 💡 Dynamic disk boxes | ✅ |
+| 📊 Real-time cost breakdown (hourly + monthly) | ✅ |
+| 💼 MPI Support Cost (30%) calculation | ✅ |
+| 📄 Cost breakdown table (instead of inline list) | ✅ |
+| 📤 Export to PDF (html2pdf.js) | ✅ |
+| 📤 Export to Excel (SheetJS) | ✅ |
+| 🔁 Reset calculation (form reset) | ✅ |
+| ⏳ Save Calculation (placeholder alert) | ✅ |
+| 📬 Footer with contact info | ✅ |
 
-bash
-Copy
-Edit
-cd Documents/Code/MPIcalculator/V7
-Start a local server on port 8000:
+---
 
-bash
-Copy
-Edit
+## 🚀 How to Run Locally
+
+### Option 1: Using Python HTTP Server
+
+```bash
+cd path/to/project
 python -m http.server 8000
-Open your browser and go to:
+```
 
-arduino
-Copy
-Edit
-http://localhost:8000
-✅ Option 2: Using VS Code + Live Server (Visual Method)
-Open the project in Visual Studio Code
+Then visit: `http://localhost:8000`
 
-Install the Live Server extension from the Extensions tab
+### Option 2: Using VS Code + Live Server
 
-Right-click index.html → Open with Live Server
+1. Open project in VS Code  
+2. Install **Live Server** extension  
+3. Right-click `index.html` → **Open with Live Server**
 
-The browser will automatically launch your site.
+---
 
+## 📄 File Structure
 
-## 📸 Demo Screenshot
+```
+V7/
+├── index.html
+├── style.css
+├── script.js
+├── pricing.csv
+├── README.md
+└── img/
+    ├── favicon-16x16.png
+    ├── favicon-32x32.png
+    ├── screenshot.png
+```
 
-![AWS EC2 Pricing Calculator Screenshot](img/screenshot.png)
+---
+
+## 📬 Contact
+
+For any inquiry or suggestion for future development, please contact:  
+📧 [email@axa.com](mailto:email@axa.com)
