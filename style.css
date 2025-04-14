@@ -10,29 +10,41 @@ body {
 }
 
 .container {
-    max-width: 700px;
+    max-width: 750px;
     margin: auto;
     padding: 20px;
     background-color: #FFFFFF;
-    box-shadow: 0 4px 8px rgba(0,0,143,0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 143, 0.2);
     border-radius: 8px;
     border-top: 5px solid #00008F;
 }
 
+/* Headings */
 h1 {
     color: #00008F;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-select, input[type="number"] {
+/* Labels */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Inputs + Dropdowns */
+select,
+input[type="number"] {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     padding: 10px;
     border-radius: 4px;
     border: 2px solid #00008F;
     font-size: 16px;
 }
 
+/* Buttons */
 button {
     width: 100%;
     cursor: pointer;
@@ -50,27 +62,7 @@ button:hover {
     background-color: #FF1721;
 }
 
-button:last-of-type {
-    background-color: #444;
-    margin-top: 10px;
-}
-
-button:last-of-type:hover {
-    background-color: #000;
-}
-
-#result {
-    margin-top: 20px;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #00008F;
-    background-color: #E6E6E6;
-    border-radius: 4px;
-    text-align: center;
-}
-
-/* Disk input grid */
+/* Disk Grid */
 #diskInputsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -98,33 +90,82 @@ button:last-of-type:hover {
     border-radius: 4px;
 }
 
-@media print {
-    body {
-        color: black;
-        background-color: white;
-    }
-
-    .container {
-        box-shadow: none;
-        border: none;
-    }
-
-    select, input, button {
-        display: none;
-    }
-
-    #result {
-        font-size: 14px;
-    }
+/* Pricing result summary */
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #00008F;
+    background-color: #E6E6E6;
+    border-radius: 4px;
+    text-align: center;
 }
 
-label {
-    display: block;
-    margin-top: 15px;
+/* Cost Breakdown Table */
+#costBreakdown {
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+    background-color: white;
+    font-size: 15px;
+}
+
+#costBreakdown th {
+    background-color: #f0f0f0;
+    text-align: left;
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+}
+
+#costBreakdown td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.highlight {
+    background-color: #dde8f2;
     font-weight: bold;
 }
 
-select, input[type="number"] {
-    margin-top: 5px;
-    margin-bottom: 10px;
+/* Button Row Styling */
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.button-row button {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-row button.green {
+    background-color: #2f8132;
+}
+
+.button-row button.green:hover {
+    background-color: #246828;
+}
+
+.button-row button.yellow {
+    background-color: #f4a100;
+    color: #000;
+}
+
+.button-row button.yellow:hover {
+    background-color: #c58000;
+}
+
+/* Hidden class */
+.hidden {
+    display: none;
 }

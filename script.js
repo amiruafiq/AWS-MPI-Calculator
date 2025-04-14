@@ -6,8 +6,8 @@ async function loadCSV() {
         alert('Failed to load CSV file.');
         return;
     }
-    const data = await response.text();
 
+    const data = await response.text();
     const rows = data.trim().split(/\r?\n/);
     const headers = rows[0].split(',').map(h => h.trim());
 
@@ -91,7 +91,11 @@ function calculatePrice() {
     const totalDiskCost = diskCostPerVM * vmCount;
     const grandTotalHourly = totalVmCost + totalDiskCost;
     const monthlyTotal = grandTotalHourly * 24 * 30;
+    const supportCost = monthlyTotal * 0.3;
+    const finalTotal = monthlyTotal + supportCost;
+    const monthlyPerVm = pricePerHour * 24 * 30;
 
+    // Show basic result
     document.getElementById('result').innerHTML = `
         <div>1) VM Cost per Hour (exclude disk): <strong>$${pricePerHour.toFixed(3)}</strong></div>
         <div>2) Total VM Cost for ${vmCount} VM(s): <strong>$${totalVmCost.toFixed(3)}</strong></div>
@@ -99,13 +103,33 @@ function calculatePrice() {
         <div>4) Total Cost (VM + EBS): <strong>$${grandTotalHourly.toFixed(3)}</strong> per hour</div>
         <div>5) Monthly Estimated Cost (30 days): <strong>$${monthlyTotal.toFixed(3)}</strong></div>
     `;
+
+    // Fill breakdown table
+    document.getElementById("hourlyPerVm").innerText = `$${pricePerHour.toFixed(5)}`;
+    document.getElementById("hourlyTotal").innerText = `$${totalVmCost.toFixed(5)}`;
+    document.getElementById("monthlyPerVm").innerText = `$${monthlyPerVm.toFixed(4)}`;
+    document.getElementById("monthlyTotal").innerText = `$${monthlyTotal.toFixed(4)}`;
+    document.getElementById("supportCost").innerText = `$${supportCost.toFixed(4)}`;
+    document.getElementById("monthlyWithSupport").innerText = `$${finalTotal.toFixed(4)}`;
+    document.getElementById("costBreakdown").classList.remove("hidden");
+}
+
+function resetForm() {
+    document.getElementById("instanceType").value = "";
+    document.getElementById("osType").value = "";
+    document.getElementById("region").value = "";
+    document.getElementById("vmCount").value = 1;
+    document.getElementById("diskCount").value = 0;
+    document.getElementById("diskInputsContainer").innerHTML = "";
+    document.getElementById("result").innerHTML = "";
+    document.getElementById("costBreakdown").classList.add("hidden");
 }
 
 function exportToPDF() {
-    const pdfContent = document.getElementById('pdfContent');
+    const content = document.getElementById("pdfContent");
 
-    if (!pdfContent.innerText.trim()) {
-        alert('Please calculate pricing before exporting.');
+    if (!content.innerText.trim()) {
+        alert("Please calculate pricing before exporting.");
         return;
     }
 
@@ -117,8 +141,11 @@ function exportToPDF() {
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
-    html2pdf().set(opt).from(pdfContent).save();
+    html2pdf().set(opt).from(content).save();
 }
 
+function exportToExcel() {
+    alert("Export to Excel not implemented yet. Would you like me to add SheetJS integration?");
+}
 
 window.onload = loadCSV;

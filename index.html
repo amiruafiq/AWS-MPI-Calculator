@@ -2,21 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AWS MPI Pricing Calculator</title>
+    <title>AWS EC2 Pricing Calculator</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Favicon setup -->
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="manifest" href="img/site.webmanifest">
-
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png">
 </head>
 <body>
     <div class="container">
-
-        <!-- This entire block will be exported -->
         <div id="pdfContent">
-            <h1>AWS MPI Pricing Calculator</h1>
+            <h1>AWS EC2 Pricing Calculator</h1>
 
             <label for="instanceType">Instance Type:</label>
             <select id="instanceType">
@@ -44,6 +37,28 @@
             <div id="diskInputsContainer"></div>
 
             <div id="result"></div>
+
+            <!-- Cost Breakdown Table -->
+            <table id="costBreakdown" class="hidden">
+                <thead>
+                    <tr><th colspan="2">Cost Breakdown</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Hourly Price (per VM)</td><td id="hourlyPerVm"></td></tr>
+                    <tr><td>Hourly Price (total)</td><td id="hourlyTotal"></td></tr>
+                    <tr><td>Monthly Price (per VM)</td><td id="monthlyPerVm"></td></tr>
+                    <tr><td>Monthly Price (total)</td><td id="monthlyTotal"></td></tr>
+                    <tr><td>MPI Support Cost (30%)</td><td id="supportCost"></td></tr>
+                    <tr class="highlight"><td><strong>Total Monthly Cost (inc. support)</strong></td><td id="monthlyWithSupport"></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="button-row">
+            <button onclick="resetForm()">New Calculation</button>
+            <button class="green">Save Calculation</button>
+            <button class="yellow" onclick="exportToExcel()">Export to Excel</button>
         </div>
 
         <button onclick="calculatePrice()">Calculate Price</button>
