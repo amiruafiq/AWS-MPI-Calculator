@@ -10,7 +10,7 @@ A sleek, browser-based AWS EC2 pricing calculator designed with AXA branding. Th
 |---------|--------|
 | 🎨 AXA UI branding with colors + favicon | ✅ |
 | 📥 Load EC2 pricing from CSV | ✅ |
-| 🔽 Dropdowns for Instance Type, OS, Region (with 20+ dummy regions) | ✅ |
+| 🔽 Dropdowns for Instance Type, OS, Region | ✅ |
 | 🖩 User input for: VM count, number of EBS disks, disk size per disk | ✅ |
 | 💡 Dynamic disk boxes | ✅ |
 | 📊 Real-time cost breakdown (hourly + monthly) | ✅ |
