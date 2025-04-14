@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AWS MPI Pricing Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon setup -->
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="manifest" href="img/site.webmanifest">
+
+</head>
+<body>
+    <div class="container">
+
+        <!-- This entire block will be exported -->
+        <div id="pdfContent">
+            <h1>AWS MPI Pricing Calculator</h1>
+
+            <label for="instanceType">Instance Type:</label>
+            <select id="instanceType">
+                <option value="" disabled selected>Select Instance Type</option>
+            </select>
+
+            <label for="osType">OS Type:</label>
+            <select id="osType">
+                <option value="" disabled selected>Select OS Type</option>
+            </select>
+
+            <label for="region">Region:</label>
+            <select id="region">
+                <option value="" disabled selected>Select Region</option>
+                <option value="Singapore Price per Hour (USD)">Singapore</option>
+                <option value="Jakarta Price per Hour (USD)">Jakarta</option>
+            </select>
+
+            <label for="vmCount">Number of VM Instances:</label>
+            <input type="number" id="vmCount" placeholder="Number of VM Instances" min="1" value="1"/>
+
+            <label for="diskCount">Number of EBS Disks per VM:</label>
+            <input type="number" id="diskCount" placeholder="Number of EBS Disks per VM" min="0" value="0" onchange="generateDisks()"/>
+
+            <div id="diskInputsContainer"></div>
+
+            <div id="result"></div>
+        </div>
+
+        <button onclick="calculatePrice()">Calculate Price</button>
+        <button onclick="exportToPDF()">Export to PDF</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>

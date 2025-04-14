@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFFFF;
+    color: #00008F;
+    padding: 40px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0,0,143,0.2);
+    border-radius: 8px;
+    border-top: 5px solid #00008F;
+}
+
+h1 {
+    color: #00008F;
+    margin-bottom: 20px;
+}
+
+select, input[type="number"] {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 2px solid #00008F;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    cursor: pointer;
+    background-color: #00008F;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #FF1721;
+}
+
+button:last-of-type {
+    background-color: #444;
+    margin-top: 10px;
+}
+
+button:last-of-type:hover {
+    background-color: #000;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #00008F;
+    background-color: #E6E6E6;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Disk input grid */
+#diskInputsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.disk-box {
+    background-color: #000000;
+    color: white;
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.disk-box input {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #222;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 4px;
+}
+
+@media print {
+    body {
+        color: black;
+        background-color: white;
+    }
+
+    .container {
+        box-shadow: none;
+        border: none;
+    }
+
+    select, input, button {
+        display: none;
+    }
+
+    #result {
+        font-size: 14px;
+    }
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+select, input[type="number"] {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
